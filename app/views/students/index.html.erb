@@ -1,0 +1,21 @@
+<h1>Students</h1>
+
+<table border>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>show</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    <% @students.each do |std| %>
+        <tr>
+            <td> <%= link_to std.name, student_path(std) %> </td>
+            <td> <%= link_to std.age, student_path(std) %> </td>
+            <td> <%= button_to 'Show', student_path(std), method: 'get' %> </td>
+            <td> <%= button_to 'Edit', edit_student_path(std), method: 'get' %> </td>
+            <td> <%= button_to 'Remove', student_path(std), method: 'delete', data: {confirm: 'Are you sure?'} %> </td>
+        </tr>
+    <% end %>
+    <%= link_to "Add new Student", new_student_path %>
+</table>
